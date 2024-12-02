@@ -1,0 +1,43 @@
+#
+# Sample This is an example runcard for the binary fluid model..
+#
+
+# model and initial configuration
+model     = drylyotropicF
+nsteps    = 18000
+nstart = 9500
+ninfo     = 10
+bc     = 0
+LX        = 1024
+LY        = 1024
+
+GammaPhi     = 0.1
+Aphi     = 2.0
+Kphi    = 0.0
+Vphi    = 0.0
+surftension_on    = false
+GammaQ     = 0.1
+xi    = 0
+CC    = 0.1
+K1    = 0.009
+K2    = 0.009
+K3    = 0.045
+zeta     = -0.08
+friction     = 5
+alpha    = 0
+epsilon     =0
+backflow_on    = true
+angle    = 0
+noise    = 0.1
+n_preinit   = 0
+npc    = 2
+config    = stripe
+level    = 200
+conc   = 1.0
+gam   = 0.1
+
+tf = 10500
+ftau = 500
+fntau = 10
+M=0.0025
+Kf = 0.001
