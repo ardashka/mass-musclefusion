@@ -8,32 +8,16 @@ Example run command
 
 A major part of this fork of the code has been changed to ensure Navier Stokes equation is actually solved properly. This means that most of the old source files will not work correctly with this code. 
 
-Changelog:
-
-* Changed the weights in the LB file
-
-* Changed the structure of the code to compute the force first
-
-* Changed the velocity updation algorithm to follow Guo et. al.
-
-* Changed the source term to follow Guo et.al. in the collision step
-
-
 Be careful before using any other codes in this package. Good way to check that the code is correct is to look for a forcing term in the velocity update (UpdateFluidQuantities), and a source term in the distribution function collision term (UpdateFluidFields). See book by Kruger on the Lattice Boltzmann method, Chapter 6, for further details.
 
 ### Many Active Systems Simulations ###
 
-To run, use the folowing example command:
-./mass lyotropic.dat -fco out -t2
-
-This code has been used for the following paper:
-Biphasic, Lyotropic, Active Nematics. Blow, Thampi, Yeomans (2014). [https://arxiv.org/abs/1407.7493]
-and others.
-
 drylyotropicF.cpp was developed by Aleksandra Ardaševa and Amin Doostmohammadi and was used in
 Yoann Le Toquin, Sushil Dubey, Aleksandra Ardaševa, Lakshmi Balasubramaniam, Emilie Delaune, Valérie Morin,  Amin Doostmohammadi,  Christophe Marcelle,  Benoît Ladoux. 2024. 'Mechanical stresses govern myoblast fusion and myotube growth'. https://doi.org/10.1101/2024.11.22.624831
 
-This version also fixes a bug where the multi-threading was not being used, although being implemented in a parallelized way.
+To run, use the following example command:
+./mass runcard.dat -fco out 
+
 
 ### Compiling ###
 
@@ -92,23 +76,6 @@ particular give understandable names to variables and functions.
 
 * Get some inspiration from: https://www.doc.ic.ac.uk/~susan/475/unmain.html
 
-
-#### Adding a new model ####
-
-Adding a new model should be simple and can be done with the following steps:
-
-* Add model declaration and implementation in `src/models/` as `your_model_name.hpp`
-and `your_model_name.cpp`. You can either copy an existing model or write these
-files from scratch. Take a look at model `minimal` for a simple example of a
-minimal implementation.
-
-* In the file `src/declare_models.cpp` add the corresponding
-`#include<models/your_model_name.hpp>` and declare your model using the
-`declare_model<ClassName>` template function.
-
-* In the `Makefile` add the model
-to model list. Finally type `make clean && make` in the main directory to check
-that everything is fine.
 
 
 
