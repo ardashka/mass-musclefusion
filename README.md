@@ -1,41 +1,36 @@
 # README #
 
-Example run command
-
-./mass inputFile.dat -o outputFolder
-
-### WARNING ###
-
-A major part of this fork of the code has been changed to ensure Navier Stokes equation is actually solved properly. This means that most of the old source files will not work correctly with this code. 
-
-Be careful before using any other codes in this package. Good way to check that the code is correct is to look for a forcing term in the velocity update (UpdateFluidQuantities), and a source term in the distribution function collision term (UpdateFluidFields). See book by Kruger on the Lattice Boltzmann method, Chapter 6, for further details.
-
 ### Many Active Systems Simulations ###
 
-drylyotropicF.cpp was developed by Aleksandra Ardaševa and Amin Doostmohammadi and was used in
-Yoann Le Toquin, Sushil Dubey, Aleksandra Ardaševa, Lakshmi Balasubramaniam, Emilie Delaune, Valérie Morin,  Amin Doostmohammadi,  Christophe Marcelle,  Benoît Ladoux. 2024. 'Mechanical stresses govern myoblast fusion and myotube growth'. https://doi.org/10.1101/2024.11.22.624831
-
-To run, use the following example command:
-./mass runcard.dat -fco out 
-
+drylyotropicF.cpp was developed by Aleksandra Ardaševa and Amin Doostmohammadi 
+and was used in Yoann Le Toquin, Sushil Dubey, Aleksandra Ardaševa, Lakshmi 
+Balasubramaniam, Emilie Delaune, Valérie Morin,  Amin Doostmohammadi,  
+Christophe Marcelle,  Benoît Ladoux. 2024. 'Mechanical stresses govern 
+myoblast fusion and myotube growth'. https://doi.org/10.1101/2024.11.22.624831
 
 ### Compiling ###
 
 The code relies on the boost::program_options library. Once it is installed, a
 simple `make` in the main directory should do it.
 
+Can be used on any operating system (Ubuntu, Windows, Linux).
+Compilation time <1 min.
+
 ### Running ###
 
 The code is run from the command line and a runcard must always be given as the
 first argument:
 
-`./mass runcard.dat`
+./mass runcard.dat -fco out 
 
-A runcard is a simple file providing the parameters for the run. Example
-runcards can be found in the `example/` directory. Every option can also be
-given to the program using the command line as
+A runcard is a simple file providing the parameters for the run. Every option can 
+also be given to the program using the command line as 
 `./mass runcard.dat --option=arg`. A complete list of available options can be
 obtained by typing `./mass -h`.
+
+Demo runtime: ~2h.
+
+### Output ###
 
 By default the program writes output files in the current directory. This can be
 changed using `--output=dir/` or `-o dir/`, where `dir/` is the target
@@ -48,88 +43,8 @@ archive.
 
 Type `./mass -h` or `./mass -m model-name -h` for a list of available options.
 
-
-### Contributing ###
-
-For simplicity the master branch is not protected such that everybody can directly
-push to it. This means that you have the responsability not to break the code!
-In particular:
-
-* Run `make clean && make` before pushing to ensure that the code compiles.
-
-* Review your code with other people if you have any doubt.
-
-* If you are making big changes (like implementing a new model) think about branching.
-
-
-Other remarks about contributions:
-
-* We do not have a strict coding style but try to respect what you see in the
-rest of the project.
-
-* Good code is easy to read and understandable, not especially 'smart'... In
-particular give understandable names to variables and functions.
-
-* Try to respect the hierarchy of the files, etc.
-
-* Commenting does not make the code slower!
-
-* Get some inspiration from: https://www.doc.ic.ac.uk/~susan/475/unmain.html
-
-
-
-
-#### Example Runcard ####
-
-Copy and paste the following to an empty file named 'inputFile.dat', and run the given command.
-
-    
-\# datafile for nematic code
-    
-
-\# model and initial configuration
-
-model    = nematic
-
-nsteps   = 1000
-
-ninfo    = 100
-
-LX       = 200
-
-LY       = 200
-
-bc	 = 0
-
-
-\# model parameters... 
-
-Gamma    = 0.1
-
-xi 	 = 0.0
-
-tau      = 2
-
-rho      = 40
-
-friction = 0.0
-
-CC	 = 0.10
-
-LL       = 0.01
-
-zeta     = 0.03
-
-backflow_on = true
-
-
-\# initial configuration options... 
-
-angle    = 0
-
-noise    = 0
-
-n_preinit= 0
-
-npc	 = 0
-
+The output is saved to .json file. The output contains:
+QQxx, QQyx: nematic (cell) tensor components
+fQQxx, fQQyx: ECM tensor components
+sigmaXX, sigmaYY: stress tensor components
+outS: isotropic stress 
