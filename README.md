@@ -3,10 +3,11 @@
 ### Many Active Systems Simulations ###
 
 drylyotropicF.cpp was developed by Aleksandra Ardaševa and Amin Doostmohammadi 
-and was used in Yoann Le Toquin, Sushil Dubey, Aleksandra Ardaševa, Lakshmi 
+and was used in 
+
+Yoann Le Toquin, Sushil Dubey, Aleksandra Ardaševa, Lakshmi 
 Balasubramaniam, Emilie Delaune, Valérie Morin,  Amin Doostmohammadi,  
-Christophe Marcelle,  Benoît Ladoux. 2024. 'Mechanical stresses govern 
-myoblast fusion and myotube growth'. https://doi.org/10.1101/2024.11.22.624831
+Christophe Marcelle,  Benoît Ladoux. Extracellular-matrix mediated stresses spatially bias myoblast fusion and myotube growth. Nat Commun 17, 10057 (2026). https://doi.org/10.1038/s41467-026-76967-6
 
 ### Compiling ###
 
