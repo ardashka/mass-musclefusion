@@ -45,7 +45,11 @@ archive.
 Type `./mass -h` or `./mass -m model-name -h` for a list of available options.
 
 The output is saved to .json file. The output contains:
+
 QQxx, QQyx: nematic (cell) tensor components
+
 fQQxx, fQQyx: ECM tensor components
+
 sigmaXX, sigmaYY: stress tensor components
+
 outS: isotropic stress 
